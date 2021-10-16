@@ -8,29 +8,21 @@ using Platformer.Core;
 
 namespace Platformer.Mechanics
 {
-    /// <summary>
-    /// This is the main class used to implement control of the player.
-    /// It is a superset of the AnimationController class, but is inlined to allow for any kind of customisation.
-    /// </summary>
+
     public class PlayerController : KinematicObject
     {
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
+        public Transform attackPoint;
 
-        /// <summary>
-        /// Max horizontal speed of the player.
-        /// </summary>
         public float maxSpeed = 7;
-        /// <summary>
-        /// Initial jump velocity at the start of a jump.
-        /// </summary>
         public float jumpTakeOffSpeed = 7;
 
         public JumpState jumpState = JumpState.Grounded;
         private bool stopJump;
-        /*internal new*/ public Collider2D collider2d;
-        /*internal new*/ public AudioSource audioSource;
+        public Collider2D collider2d;
+        public AudioSource audioSource;
         public Health health;
         public bool controlEnabled = true;
 
@@ -119,12 +111,19 @@ namespace Platformer.Mechanics
             }
 
             if (move.x > 0.01f)
+            {
                 spriteRenderer.flipX = false;
+                attackPoint.position.x = Mathf.Abs(attackPoint.position.x);
+            }
             else if (move.x < -0.01f)
+            {
                 spriteRenderer.flipX = true;
+                attackPoint.position.x = -1f*Mathf.Abs(attackPoint.position.x);
+            }
 
-            animator.SetBool("grounded", IsGrounded);
-            animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+            animator.SetBool("Grounded", IsGrounded);
+            animator.SetFloat("VelocityX", Mathf.Abs(velocity.x) / maxSpeed);
+            animator.SetFloat("AirSpeedY", velocity.y);
 
             targetVelocity = move * maxSpeed;
         }
