@@ -15,6 +15,7 @@ namespace Platformer.Mechanics
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
         public Transform attackPoint;
+        private bool attackPointFlipped = false;
 
         public float maxSpeed = 7;
         public float jumpTakeOffSpeed = 7;
@@ -113,12 +114,20 @@ namespace Platformer.Mechanics
             if (move.x > 0.01f)
             {
                 spriteRenderer.flipX = false;
-                attackPoint.position.x = Mathf.Abs(attackPoint.position.x);
+                if(attackPointFlipped)
+                {
+                    attackPoint.transform.Rotate(0f, 180f, 0f);
+                    attackPointFlipped = false;
+                }
             }
             else if (move.x < -0.01f)
             {
                 spriteRenderer.flipX = true;
-                attackPoint.position.x = -1f*Mathf.Abs(attackPoint.position.x);
+                if (!attackPointFlipped)
+                {
+                    attackPoint.transform.Rotate(0f, 180f, 0f);
+                    attackPointFlipped = true;
+                }
             }
 
             animator.SetBool("Grounded", IsGrounded);
