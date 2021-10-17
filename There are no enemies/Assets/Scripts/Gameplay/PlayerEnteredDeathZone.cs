@@ -1,6 +1,7 @@
 using Platformer.Core;
 using Platformer.Mechanics;
 using Platformer.Model;
+using UnityEngine;
 
 namespace Platformer.Gameplay
 {
@@ -16,6 +17,7 @@ namespace Platformer.Gameplay
 
         public override void Execute()
         {
+            Debug.Log("Drop");
             Simulation.Schedule<PlayerDeath>(0);
         }
     }
