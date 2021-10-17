@@ -9,7 +9,8 @@ public class PlayerCombatScript : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public float attackRate = 2f;
-    public float nextAttackTime = 0f;
+    public int damage=10;
+    private float nextAttackTime = 0f;
     public LayerMask enemyLayers;
     private List<string> attacks= new List<string>{"Attack1","Attack2","Attack3"};
     void Update()
@@ -29,7 +30,7 @@ public class PlayerCombatScript : MonoBehaviour
         Collider2D[] hitEnemies= Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().takeDamage(50);
+            enemy.GetComponent<Enemy>().takeDamage(damage);
         }
 
     }

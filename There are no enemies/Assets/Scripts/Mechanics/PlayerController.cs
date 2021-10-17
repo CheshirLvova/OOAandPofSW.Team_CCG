@@ -129,11 +129,9 @@ namespace Platformer.Mechanics
                     attackPointFlipped = true;
                 }
             }
-
             animator.SetBool("Grounded", IsGrounded);
             animator.SetFloat("VelocityX", Mathf.Abs(velocity.x) / maxSpeed);
             animator.SetFloat("AirSpeedY", velocity.y);
-
             targetVelocity = move * maxSpeed;
         }
 
