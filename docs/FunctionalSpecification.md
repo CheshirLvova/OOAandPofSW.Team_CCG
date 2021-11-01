@@ -1,5 +1,5 @@
 # TⓤO EMIT
-TⓤO EMIT is a click and point game where you need to where you should get out of the maze full of puzzles in the shortest possible time. Check your ranking in the standings, get prizes, discover new levels, and don't forget about time.
+TⓤO EMIT is a click-and-point game where you need get out of the maze full of puzzles in the shortest possible time. Check your ranking in the standings, get prizes, discover new levels, and don't forget about time.
 
 ## Functional Requirements 
 
