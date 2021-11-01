@@ -1,4 +1,4 @@
-![Architecture.png](./docs/src/Architecture.png)
+![Architecture.png](./src/Architecture.png)
 ___
 # Architecture
 
