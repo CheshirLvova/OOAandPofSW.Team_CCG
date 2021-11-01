@@ -21,5 +21,5 @@ The application should have:
 
 ## UML diagrams
 
-![Account management system usecase diagram](./Account_usecase.png)
-![Game management system usecase diagram](./Game_managements_usecase.png)
+![Account management system usecase diagram](./src/Account_usecase.png)
+![Game management system usecase diagram](./src/Game_managements_usecase.png)
