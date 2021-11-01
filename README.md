@@ -1,4 +1,4 @@
-![Banner.png](./docs/Banner.png)
+![Banner.png](./docs/src/Banner.png)
 ___
 # Team_CCG
 
@@ -11,7 +11,7 @@ ___
 
 ## Project Description
   1. [Functional specifications and UML diagrams](./docs/FunctionalSpecification.md)
-  2. [Identity Management](./docs/)
-  3. [Architecture requirements](./docs/)
+  2. [Identity Management](./docs/IdentityManagement.md)
+  3. [Architecture requirements](./docs/Architecture.md)
 
 
