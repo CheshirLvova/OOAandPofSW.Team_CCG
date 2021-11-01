@@ -13,4 +13,11 @@ ___
   1. [Functional specifications, Identity Management and UML diagrams](./docs/FunctionalSpecification.md)
   2. [Architecture requirements](./docs/Architecture.md)
 
+## Storage
+## Resiliency model
+## Security model
+## Hosted Service
+## Telemetry
+## Monitoring
+
 
