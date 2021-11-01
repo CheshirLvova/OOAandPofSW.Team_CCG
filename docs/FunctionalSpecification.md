@@ -25,7 +25,9 @@ Users can create an account with the login information stored in Identity or the
 
 ## UML diagrams
 **Account management system usecase diagram:**
+
 ![Account management system usecase diagram](./src/Account_usecase.png)
 
 **Game management system usecase diagram:**
+
 ![Game management system usecase diagram](./src/Game_managements_usecase.png)
