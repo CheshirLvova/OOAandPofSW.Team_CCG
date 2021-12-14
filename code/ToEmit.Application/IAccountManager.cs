@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ToEmit.Application
 {
-    public interface IAccountManagement
+    public interface IAccountManager
     {
         public bool UserAlreadyExist(string username);
         public bool EmailAlreadyInUse(string EmailAddres);

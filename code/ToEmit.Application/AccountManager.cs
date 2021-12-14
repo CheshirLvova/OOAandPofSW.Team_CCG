@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace ToEmit.Application
 {
-    public class AccountManagement : IAccountManagement
+    public class AccountManager : IAccountManager
     {
         private ToEmitDBContext _db;
 
-        public AccountManagement(ToEmitDBContext dBContext)
+        public AccountManager(ToEmitDBContext dBContext)
         {
             _db = dBContext;
         }

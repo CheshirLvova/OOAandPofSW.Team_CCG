@@ -35,7 +35,8 @@ namespace ToEmit
                     options.ExpireTimeSpan = TimeSpan.FromDays(31);
                 });
             services.AddDbContext<ToEmitDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<IAccountManagement, AccountManagement>();
+            services.AddScoped<IAccountManager, AccountManager>();
+            services.AddScoped<IScoreManager, ScoreManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

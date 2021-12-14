@@ -13,8 +13,8 @@ namespace ToEmit.Web.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly IAccountManagement _accountManagement;
-        public LoginController(IAccountManagement accountManagement)
+        private readonly IAccountManager _accountManagement;
+        public LoginController(IAccountManager accountManagement)
         {
             _accountManagement = accountManagement;
         }

@@ -12,8 +12,8 @@ namespace ToEmit.Web.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IAccountManagement _accountManagement;
-        public AccountController(IAccountManagement accountManagement)
+        private readonly IAccountManager _accountManagement;
+        public AccountController(IAccountManager accountManagement)
         {
             _accountManagement = accountManagement;
         }
