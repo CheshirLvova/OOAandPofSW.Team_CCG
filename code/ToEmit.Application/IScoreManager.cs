@@ -11,6 +11,7 @@ namespace ToEmit.Application
         public int get_number_of_rows();
         public void add_score(string username, int score);
         public int get_score(string username);
+        public bool RecordExist(string username);
         public List<Scores> get_all_scores();
         public List<Scores> get_scores_n_from(int amount, int from);
    

@@ -31,7 +31,7 @@ namespace ToEmit
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
-                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Login");
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Login/Login");
                     options.ExpireTimeSpan = TimeSpan.FromDays(31);
                 });
             services.AddDbContext<ToEmitDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

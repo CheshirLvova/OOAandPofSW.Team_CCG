@@ -1,0 +1,130 @@
+﻿
+body{
+    margin:0;
+    /*background:radial-gradient(#ff6a00,#ff6a00)*/
+}
+
+.page-title{
+    color:aquamarine;
+    text-align:center;
+    font-size: 6em;
+}
+.game-info-container{
+    grid-column:1/-1;
+    display:flex;
+    justify-content:space-between;
+}
+.game-info{
+    color:bisque;
+    font-size:3em;
+}
+.game-container{
+    display:grid;
+    grid-template-columns: repeat(4,auto);
+    grid-gap: 10px;
+    margin:50px;
+    justify-content:center;
+    perspective:500px;
+}
+.card{
+    border-color:transparent;
+    background-color:inherit;
+    height:175px;
+    width:125px;
+    
+}
+.card-face{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    backface-visibility:hidden;
+    border-radius:12px;
+    border-width:1px;
+    border-style:solid;
+    transition:transform 500ms ease-in-out;
+}
+.card.visible .card-back{
+    transform:rotateY(-180deg);
+}
+.card.visible .card-front{
+    transform:rotateY(0)
+}
+.card.matched .card-value
+{
+    animation: dance 1s linear infinite 500ms;
+
+}
+
+.overlay-text {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: yellowgreen;
+}
+.overlay-text-small{
+    font-size:.3em;
+
+}
+.overlay-text.visible{
+    display:flex;
+    flex-direction:column;
+    animation:overlay-grow 500ms forwards;
+}
+@keyframes overlay-grow{
+    from{
+        background-color:rgba(0,0,0,0);
+        font-size:0;
+    }
+    to{
+        background-color:rgba(0,0,0,.8);
+        font-size:10em;
+    }
+}
+@keyframes dance {
+    0%, 100%{
+        transform:rotate(0);
+    }
+    25%{
+        transform:rotate(-30deg);
+    }
+    75%{
+        transform:rotate(30deg);
+    }
+}
+.card-back{
+    background-color:black;
+    border-color:orange;
+}
+.card-front{
+    background-color:wheat;
+    transform:rotateY(180deg);
+}
+.card-value{
+    transition: transform 100ms ease-in-out;
+    transform:scale(.9);
+}
+.card-front:hover .card-value{
+    transform:scale(1);
+}
+.card-back:hover {
+    background-color:gray;
+}
+@media(max-width:600px)
+{
+    .game-container{
+        grid-template-columns:repeat(2,auto);
+    }
+    .game-info-container{
+        flex-direction:column;
+        align-items:center;
+    }
+}

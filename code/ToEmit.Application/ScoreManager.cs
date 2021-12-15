@@ -16,18 +16,25 @@ namespace ToEmit.Application
         }
         public void add_score(string username, int score)
         {
-            _db.Scores.Add(new Domain.Scores { Username = username, Score = score });
+            if(_db.Scores.Any(x=>x.Username==username))
+            {
+                _db.Scores.First(x => x.Username == username).Score = score;
+            }
+            else
+            {
+                _db.Scores.Add(new Domain.Scores { Username = username, Score = score });
+            }
             _db.SaveChanges();
         }
 
         public List<Scores> get_all_scores()
         {
-            return _db.Scores.OrderBy(x => x.Score).ToList();
+            return _db.Scores.OrderByDescending(x => x.Score).ToList();
         }
 
         public List<Scores> get_scores_n_from(int start=0, int amount=25)
         {
-            return _db.Scores.Skip(start).Take(amount).OrderBy(x => x.Score).ToList();
+            return _db.Scores.Skip(start).Take(amount).OrderByDescending(x => x.Score).ToList();
         }
 
         public int get_number_of_rows()
@@ -35,12 +42,15 @@ namespace ToEmit.Application
             int number_of_rows = _db.Scores.Count();
             return number_of_rows;
         }
-
+        public bool RecordExist(string username)
+        {
+            bool exist = _db.Scores.Any(x => x.Username == username);
+            return exist;
+        }
         public int get_score(string username)
         {
             int score = _db.Scores.First(x => x.Username == username).Score;
             return score;
         }
-
     }
 }

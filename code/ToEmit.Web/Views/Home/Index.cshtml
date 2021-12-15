@@ -1,8 +1,39 @@
-﻿@{
+﻿@model IEnumerable<ToEmit.Web.Models.CardModel>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1 class="page-title">To Emit</h1>
+<div class="overlay-text visible">
+    Click to Start
 </div>
+<div id="game-over-text" class="overlay-text">
+    GAME OVER
+    <span class="overlay-text-small">Click to Restart</span>
+</div>
+<div id="victory-text" class="overlay-text">
+    VICTORY
+    <span class="overlay-text-small">Click to Restart</span>
+</div>
+<div class="game-container">
+    <div class="game-info-container">
+        <div class="game-info">
+            Time <span id="time-remaining">100</span>
+        </div>
+        <div class="game-info">
+            Score <span id="score">0</span>
+        </div>
+       </div>
+    @foreach(var item in Model)
+    {
+        <div class="card">
+            <div class="card-back card-face">
+
+            </div>
+            <div class="card-front card-face">
+                <img class="card-value" src="~/imgs/@item.image_name"/>
+            </div>
+        </div>
+    }
+</div>
+
