@@ -1,0 +1,193 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Projects\\git\\OOAandPofSW.Team_CCG\\code\\ToEmit.Application\\ToEmit.Application.csproj": {}
+  },
+  "projects": {
+    "D:\\Projects\\git\\OOAandPofSW.Team_CCG\\code\\ToEmit.Application\\ToEmit.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\git\\OOAandPofSW.Team_CCG\\code\\ToEmit.Application\\ToEmit.Application.csproj",
+        "projectName": "ToEmit.Application",
+        "projectPath": "D:\\Projects\\git\\OOAandPofSW.Team_CCG\\code\\ToEmit.Application\\ToEmit.Application.csproj",
+        "packagesPath": "C:\\Users\\nazar\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\git\\OOAandPofSW.Team_CCG\\code\\ToEmit.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\nazar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\Projects\\git\\OOAandPofSW.Team_CCG\\code\\ToEmit.Infrastructure\\ToEmit.Infrastructure.csproj": {
+                "projectPath": "D:\\Projects\\git\\OOAandPofSW.Team_CCG\\code\\ToEmit.Infrastructure\\ToEmit.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projects\\git\\OOAandPofSW.Team_CCG\\code\\ToEmit.Domain\\ToEmit.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\git\\OOAandPofSW.Team_CCG\\code\\ToEmit.Domain\\ToEmit.Domain.csproj",
+        "projectName": "ToEmit.Domain",
+        "projectPath": "D:\\Projects\\git\\OOAandPofSW.Team_CCG\\code\\ToEmit.Domain\\ToEmit.Domain.csproj",
+        "packagesPath": "C:\\Users\\nazar\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\git\\OOAandPofSW.Team_CCG\\code\\ToEmit.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\nazar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.21, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.21, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Projects\\git\\OOAandPofSW.Team_CCG\\code\\ToEmit.Infrastructure\\ToEmit.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Projects\\git\\OOAandPofSW.Team_CCG\\code\\ToEmit.Infrastructure\\ToEmit.Infrastructure.csproj",
+        "projectName": "ToEmit.Infrastructure",
+        "projectPath": "D:\\Projects\\git\\OOAandPofSW.Team_CCG\\code\\ToEmit.Infrastructure\\ToEmit.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\nazar\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\git\\OOAandPofSW.Team_CCG\\code\\ToEmit.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\nazar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\Projects\\git\\OOAandPofSW.Team_CCG\\code\\ToEmit.Domain\\ToEmit.Domain.csproj": {
+                "projectPath": "D:\\Projects\\git\\OOAandPofSW.Team_CCG\\code\\ToEmit.Domain\\ToEmit.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
