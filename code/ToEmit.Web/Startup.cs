@@ -48,7 +48,7 @@ namespace ToEmit
             });
             services.AddScoped<IAccountManager, AccountManager>();
             services.AddScoped<IScoreManager, ScoreManager>();
-            services.AddSingleton<StatusMonitoringService>();
+            services.AddHostedService<StatusMonitoringService>();
            
         }
 
