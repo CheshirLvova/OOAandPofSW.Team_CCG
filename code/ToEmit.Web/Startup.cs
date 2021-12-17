@@ -34,7 +34,17 @@ namespace ToEmit
                     options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Login/Login");
                     options.ExpireTimeSpan = TimeSpan.FromDays(31);
                 });
-            services.AddDbContext<ToEmitDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ToEmitDBContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                    sqlServerOptionsAction: sqlOptions =>
+                    {
+                        sqlOptions.EnableRetryOnFailure(
+                            maxRetryCount: 10,
+                            maxRetryDelay: TimeSpan.FromSeconds(30),
+                            errorNumbersToAdd: null);
+                    });
+            });
             services.AddScoped<IAccountManager, AccountManager>();
             services.AddScoped<IScoreManager, ScoreManager>();
         }
