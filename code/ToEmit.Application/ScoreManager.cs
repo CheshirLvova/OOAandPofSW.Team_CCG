@@ -4,6 +4,7 @@ using System.Text;
 using ToEmit.Infrastructure;
 using System.Linq;
 using ToEmit.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace ToEmit.Application
 {
@@ -16,15 +17,25 @@ namespace ToEmit.Application
         }
         public void add_score(string username, int score)
         {
-            if(_db.Scores.Any(x=>x.Username==username))
-            {
-                _db.Scores.First(x => x.Username == username).Score = score;
-            }
-            else
-            {
-                _db.Scores.Add(new Domain.Scores { Username = username, Score = score });
-            }
-            _db.SaveChanges();
+            var strategy = _db.Database.CreateExecutionStrategy();
+            strategy.Execute(
+                () =>
+                {
+                    using(var transaction = _db.Database.BeginTransaction())
+                    {
+                        if (_db.Scores.Any(x => x.Username == username))
+                        {
+                            _db.Scores.First(x => x.Username == username).Score = score;
+                        }
+                        else
+                        {
+                            _db.Scores.Add(new Domain.Scores { Username = username, Score = score });
+                        }
+                        _db.SaveChanges();
+                        transaction.Commit();
+                    }
+                });
+            
         }
 
         public List<Scores> get_all_scores()

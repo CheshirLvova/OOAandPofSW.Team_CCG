@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using ToEmit.Infrastructure;
 using ToEmit.Application;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using ToEmit.Services;
 
 namespace ToEmit
 {
@@ -34,9 +35,21 @@ namespace ToEmit
                     options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Login/Login");
                     options.ExpireTimeSpan = TimeSpan.FromDays(31);
                 });
-            services.AddDbContext<ToEmitDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ToEmitDBContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                    sqlServerOptionsAction: sqlOptions =>
+                    {
+                        sqlOptions.EnableRetryOnFailure(
+                            maxRetryCount: 10,
+                            maxRetryDelay: TimeSpan.FromSeconds(30),
+                            errorNumbersToAdd: null);
+                    });
+            });
             services.AddScoped<IAccountManager, AccountManager>();
             services.AddScoped<IScoreManager, ScoreManager>();
+            services.AddHostedService<StatusMonitoringService>();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

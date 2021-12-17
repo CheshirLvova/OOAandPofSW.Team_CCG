@@ -14,7 +14,9 @@ namespace ToEmit.Web.Models
         [DataType(DataType.EmailAddress)]
         public string EmailAddres { get; set; }
         [DataType(DataType.Password)]
-        [StringLength(100, MinimumLength = 8, ErrorMessage = "You need to provide long enough password.")]
+        [StringLength(100, ErrorMessage = "You dont have to use so long password")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$",
+         ErrorMessage = "Password must contain: Minimum 8 characters atleast 1 UpperCase Alphabet, 1 LowerCase Alphabet and 1 Number")]
         public string Password { get; set; }
         [Display(Name = "Confirm Password")]
         [Compare("Password",ErrorMessage ="Your password and confirm password do not match")]

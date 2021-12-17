@@ -2,6 +2,7 @@
 using System.Security.Cryptography;
 using ToEmit.Infrastructure;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace ToEmit.Application
 {
@@ -25,21 +26,42 @@ namespace ToEmit.Application
         }
         public void AddUser(string username, string emailAddres, string Password)
         {
-            string encryptedPassword = Encryptor.CalculateMD5Hash(Password);
-            _db.Users.Add(new Domain.Users { Username = username, EmailAddres = emailAddres, Password = encryptedPassword, Type="User" });
-            _db.SaveChanges();
+            var strategy = _db.Database.CreateExecutionStrategy();
+            strategy.Execute(
+                () =>
+                {
+                    using(var trainsaction =_db.Database.BeginTransaction())
+                    {
+                        string encryptedPassword = Encryptor.CalculateMD5Hash(Password);
+                        _db.Users.Add(new Domain.Users { Username = username, EmailAddres = emailAddres, Password = encryptedPassword, Type = "User" });
+                        _db.SaveChanges();
+                        trainsaction.Commit();
+                    }
+                });
+            
         }
         public bool verifyUser(string login, string password)
         {
-            bool valid_email = _db.Users.Any(x => x.EmailAddres == login);
-            if (valid_email)
-            {
-                string trupassword = _db.Users.First(x => x.EmailAddres == login).Password.Replace(" ","");
-                string encryptedInputPass = Encryptor.CalculateMD5Hash(password);
-                bool verification= (trupassword == encryptedInputPass);
-                return verification;
-            }
-            return false;
+            bool verification = false;
+            var strategy = _db.Database.CreateExecutionStrategy();
+            strategy.Execute(
+                () =>
+                {
+                    using (var trainsaction = _db.Database.BeginTransaction())
+                    {
+                        bool valid_email = _db.Users.Any(x => x.EmailAddres == login);
+                        if (valid_email)
+                        {
+                            string trupassword = _db.Users.First(x => x.EmailAddres == login).Password.Replace(" ", "");
+                            string encryptedInputPass = Encryptor.CalculateMD5Hash(password);
+                            verification = (trupassword == encryptedInputPass);
+
+                        }
+                        trainsaction.Commit();
+                    }
+                    
+                });
+            return verification;
         }
         public string getRole(string email)
         {

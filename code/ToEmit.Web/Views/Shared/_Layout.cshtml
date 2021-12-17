@@ -28,19 +28,19 @@
                         </li>
                         @if (!User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">
+                            <li class="nav-item" style="float:right">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="SignUp">Sign Up</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" style="float:right">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Login">Sign In</a>
                             </li>
                         }
                         else
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="SignUp">@User.Identity.Name</a>
+                            <li class="nav-item" style="float:right">
+                                <a class="nav-link text-dark" >@User.Identity.Name</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" style="float:right">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
                             </li>
                         }
