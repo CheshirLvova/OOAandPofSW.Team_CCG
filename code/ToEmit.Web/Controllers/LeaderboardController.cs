@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using ToEmit.Application;
 using ToEmit.Web.Models;
 
@@ -11,9 +12,11 @@ namespace ToEmit.Web.Controllers
     public class LeaderboardController : Controller
     {
         private readonly IScoreManager _scoreManager;
-        public LeaderboardController(IScoreManager scoreManager)
+        private readonly ILogger<LeaderboardController> _logger;
+        public LeaderboardController(ILogger<LeaderboardController> logger,IScoreManager scoreManager)
         {
             _scoreManager = scoreManager;
+            _logger = logger;
         }
         public IActionResult Index()
         {

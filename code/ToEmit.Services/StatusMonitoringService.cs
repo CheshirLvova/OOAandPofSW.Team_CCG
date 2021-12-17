@@ -32,6 +32,7 @@ namespace ToEmit.Services
             from = new MailAddress("ToEmit@gmail.com", "Status");
             to = new MailAddress("Admin@gamil.com");
             send = false;
+            _logger.LogInformation("StatusMonitoringService started");
             return base.StartAsync(cancellationToken);
         }
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -48,11 +49,11 @@ namespace ToEmit.Services
                         $"<h1>Your web application ToEmit does not response!</h1></br>";
                     SmtpClient.Send(message);
                     send = true;
-                    _logger.LogError("Whe website is down {StatusCode} ", result.StatusCode);
+                    _logger.LogCritical("Whe website is down {StatusCode} ", result.StatusCode);
                 }
                 else
                 {
-                    _logger.LogInformation("Website is up");
+                    //_logger.LogInformation("Website is up");
                     if(send)
                     {
                         MailMessage message = new MailMessage(from, to);
@@ -70,6 +71,7 @@ namespace ToEmit.Services
         public override Task StopAsync(CancellationToken cancellationToken)
         {
             client.Dispose();
+            _logger.LogWarning("StatusMonitoringService stopped");
             return base.StopAsync(cancellationToken);
         }
     }

@@ -13,7 +13,6 @@ using ToEmit.Web.Models;
 
 namespace ToEmit.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -23,7 +22,7 @@ namespace ToEmit.Controllers
             _scoreManager = scoreManager;
             _logger = logger;
         }
-       // [Authorize]
+        [Authorize]
         public IActionResult Index()
         {
             List<CardModel> imageNames = new List<CardModel>();
@@ -45,7 +44,7 @@ namespace ToEmit.Controllers
             imageNames.Add(new CardModel { image_name = "Skull.png" });
             return View(imageNames);
         }
-       // [Authorize]
+        [Authorize]
         [HttpPost]
         public IActionResult SaveScore(int score)
         {
@@ -55,6 +54,7 @@ namespace ToEmit.Controllers
                 if (current_score < score)
                 {
                     _scoreManager.add_score(User.Identity.Name, score);
+                    _logger.LogInformation("{user} got new highscore: {score}",User.Identity.Name,score);
                 }
             }
             else
@@ -67,6 +67,7 @@ namespace ToEmit.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+            _logger.LogWarning("Error occured \n{details}", HttpContext.TraceIdentifier);
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
