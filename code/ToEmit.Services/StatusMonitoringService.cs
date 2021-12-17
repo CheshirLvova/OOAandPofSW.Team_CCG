@@ -39,7 +39,7 @@ namespace ToEmit.Services
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                var result = await client.GetAsync("https://localhost:44375/");
+                var result = await client.GetAsync("https://toemitweb20211217083641.azurewebsites.net/");
                 if(!result.IsSuccessStatusCode)
                 {
                     MailMessage message = new MailMessage(from, to);
