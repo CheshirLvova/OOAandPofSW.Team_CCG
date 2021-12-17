@@ -49,7 +49,7 @@ namespace ToEmit
             });
             services.AddScoped<IAccountManager, AccountManager>();
             services.AddScoped<IScoreManager, ScoreManager>();
-            services.AddHostedService<StatusMonitoringService>();
+            //services.AddHostedService<StatusMonitoringService>();
             
            
         }
