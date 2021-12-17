@@ -37,6 +37,7 @@ namespace ToEmit.Web.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Authorize(LoginModel user)
         {
             if (User.Identity.IsAuthenticated)

@@ -26,6 +26,7 @@ namespace ToEmit.Web.Controllers
             return View();  
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult SignUp(UserModel userModel)
         {
             if(_accountManagement.UserAlreadyExist(userModel.UserName))
