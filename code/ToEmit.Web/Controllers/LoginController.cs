@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using ToEmit.Application;
 using ToEmit.Web.Models;
 
@@ -14,9 +15,11 @@ namespace ToEmit.Web.Controllers
     public class LoginController : Controller
     {
         private readonly IAccountManager _accountManagement;
-        public LoginController(IAccountManager accountManagement)
+        private readonly ILogger<LoginController> _logger;
+        public LoginController(ILogger<LoginController> logger,IAccountManager accountManagement)
         {
             _accountManagement = accountManagement;
+            _logger = logger;
         }
         public IActionResult Login()
         {
@@ -55,13 +58,15 @@ namespace ToEmit.Web.Controllers
                 }
                 else
                 {
+                    _logger.LogWarning("Attempt to login with invalid login or password {usedLogin}, {usedPassword}", user.Login, user.Password);
                     TempData["Error"] = "Error. Username or Password is invalid";
                     return View("Login");
                 }
                
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
+                _logger.LogError("Error occured \n {error}", e);
                 return View("Error");
             }
         }
