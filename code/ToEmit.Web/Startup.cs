@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using ToEmit.Infrastructure;
 using ToEmit.Application;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using ToEmit.Services;
 
 namespace ToEmit
 {
@@ -47,6 +48,8 @@ namespace ToEmit
             });
             services.AddScoped<IAccountManager, AccountManager>();
             services.AddScoped<IScoreManager, ScoreManager>();
+            services.AddSingleton<StatusMonitoringService>();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
